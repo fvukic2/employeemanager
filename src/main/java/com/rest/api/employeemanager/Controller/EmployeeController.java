@@ -18,11 +18,22 @@ public class EmployeeController {
 
     @PostMapping
     private void saveNewEmployee(@RequestBody Employee employee){
+        employee.setId(0);
         employeeService.saveNewEmployee(employee);
     }
 
     @GetMapping
     private List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEmployee(@PathVariable int id){
+        employeeService.deleteEmployee(id);
+    }
+
+    @PutMapping()
+    private void updateEmployee(@RequestBody Employee employee){
+        employeeService.saveNewEmployee(employee);
     }
 }
